@@ -7,7 +7,12 @@
 #' @export
 r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 	desc <- readLines(description_file)
-	cff <- c("# YAML 1.2", "---")
+	cff <- c(
+		"# YAML 1.2",
+		"---",
+		"cff-version: 1.1.0",
+		'message: "If you use this software, please cite it using these metadata."'
+	)
 	for (l in seq_along(desc)) {
 		cff <- append(cff, fetchCFFelement(desc[l], "Title:"))
 		cff <- append(cff, fetchCFFelement(desc[l], "Version:"))
