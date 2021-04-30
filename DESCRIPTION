@@ -1,6 +1,6 @@
 Package: RCFF
 Title: R Citation File Format
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R:
 	person(
 		given = "Waldir",
