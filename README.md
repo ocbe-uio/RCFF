@@ -15,7 +15,7 @@ remotes::install_github("ocbe-uio/RCFF")
 
 and run
 
-```
+```r
 r2cff()
 ```
 
