@@ -20,3 +20,7 @@ r2cff()
 ```
 
 To see part of the package's description file converted to CFF. You can also provide the path (absolute or relative) to some other DESCRPTION file to test it.
+
+# Contributing
+
+This package is licensed under the GPL, all contributions are welcome. To submit a bug or a feature request, please use [this form](https://github.com/ocbe-uio/RCFF/issues/new). To contribute code, please use [Pull Requests](https://github.com/ocbe-uio/RCFF/pulls).
