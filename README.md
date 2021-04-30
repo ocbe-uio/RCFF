@@ -1,3 +1,12 @@
+# What is a CFF?
+
+CFF stands for Citation File Format, a scientific standard that facilitates the gathering of software metadata for citation purposes.
+
+For more information, please visit:
+
+- https://citation-file-format.github.io/
+- https://github.com/citation-file-format/citation-file-format/blob/master/README.md
+
 # RCFF
 
 This package follows up on a [proposal shared on the citation-file-format GitHub page](https://github.com/citation-file-format/citation-file-format/issues/110#issue-648726798)
