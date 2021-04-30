@@ -9,7 +9,6 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 	desc <- readLines(description_file)
 	cff <- c("# YAML 1.2", "---")
 	for (l in seq_along(desc)) {
-		# TODO: transform if-statements into functions
 		cff <- append(cff, fetchCFFelement(desc[l], "Title:"))
 		cff <- append(cff, fetchCFFelement(desc[l], "Version:"))
 	}
@@ -24,7 +23,8 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 fetchCFFelement <- function(string, element_r, element_cff = tolower(element_r)) {
 	element_r_nchar <- nchar(element_r)
 	if (substr(string, 1, element_r_nchar) == element_r) {
-		cff_entry <- paste(element_cff, string) # FIXME: duplicate text
+		element_value <- gsub(paste0(element_r, " "), "", string)
+		cff_entry <- paste(element_cff, element_value)
 		return(cff_entry)
 	}
 }
