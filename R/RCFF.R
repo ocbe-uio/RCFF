@@ -12,6 +12,7 @@
 #' https://www.software.ac.uk/blog/2017-12-12-standard-format-citation-files
 #' https://citation-file-format.github.io
 #' https://github.com/citation-file-format/citation-file-format/blob/master/README.md
+#' https://citation-file-format.github.io/cff-initializer-javascript/
 #'
 #' @section What is the Citation File Format (CFF)?:
 #' CFF is a standard format for the citation of software proposed by

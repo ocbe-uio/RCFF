@@ -4,8 +4,9 @@ CFF stands for Citation File Format, a scientific standard that facilitates the 
 
 For more information, please visit:
 
-- https://citation-file-format.github.io/
-- https://github.com/citation-file-format/citation-file-format/blob/master/README.md
+- The Citation File Format homepage: https://citation-file-format.github.io/
+- [Detailed CFF documentation](https://github.com/citation-file-format/citation-file-format/blob/master/README.md)
+- [An online CITATION.cff file initializer](https://citation-file-format.github.io/cff-initializer-javascript/)
 
 # RCFF
 
