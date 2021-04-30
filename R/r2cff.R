@@ -49,7 +49,7 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 				remove_elements=c('"', ",")
 			)
 		)
-		# FIXME: if role = cph, given-name should be converted to name (organization)
+		# FIXME: #8 if role = cph, given-name should be converted to name (organization)
 	}
 
 	# TODO: #6 add validation that throws warning when required CFF element is NA
