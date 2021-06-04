@@ -116,11 +116,18 @@ exportCFF <- function(infile, outfile="CITATION.cff") {
 }
 
 validateCFF <- function(cff_file) {
-	required_fields <- c("authors", "date-released", "title", "version")
-	for (f in required_fields) {
+	required_fields <- data.frame(
+		cff = c("authors", "date-released", "title", "version"),
+		r = c("person", "Date", "Title", "Version")
+	)
+	for (f in required_fields$cff) {
 		found_f <- grepl(pattern=f, x=cff_file)
 		if (!any(found_f)) {
-			warning(f, " not found. It is a CFF 1.1.0 required field.")
+			r_equivalent <- required_fields$r[match(f, required_fields$cff)]
+			warning(
+				f, " not found. It is a CFF 1.1.0 required field.\n",
+				"Please add a '", r_equivalent, "' field to your input file."
+			)
 		}
 	}
 }
