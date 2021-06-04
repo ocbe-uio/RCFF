@@ -6,7 +6,12 @@
 #' @author Waldir Leoncio
 #' @export
 r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
-	# TODO: #7 add validation if description_file is not found
+	if (!file.exists(description_file)) {
+		stop(
+			description_file,
+			" file not found on the provided file path."
+		)
+	}
 
 	# ======================================================== #
 	# Creating proto files for CFF and DESCRIPTION             #
