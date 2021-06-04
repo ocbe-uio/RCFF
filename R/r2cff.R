@@ -6,12 +6,7 @@
 #' @author Waldir Leoncio
 #' @export
 r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
-	if (!file.exists(description_file)) {
-		stop(
-			description_file,
-			" file not found on the provided file path."
-		)
-	}
+	validateR(description_file)
 
 	# ======================================================== #
 	# Creating proto files for CFF and DESCRIPTION             #
@@ -51,8 +46,6 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 		)
 		# FIXME: #8 if role = cph, given-name should be converted to name (organization)
 	}
-
-	# TODO: #6 add validation that throws warning when required CFF element is NA
 	validateCFF(cff)
 
 	# ======================================================== #
@@ -62,7 +55,6 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 		return(cat(cff, sep = "\n"))
 	} else {
 		exportCFF(cff)
-
 	}
 }
 
@@ -113,6 +105,13 @@ exportCFF <- function(infile, outfile="CITATION.cff") {
 	out_file <- file(outfile)
 	writeLines(infile, out_file)
 	close(out_file)
+}
+
+validateR <- function(r_file) {
+	if (!file.exists(r_file)) {
+		stop(r_file, " file not found on the provided file path.")
+	}
+
 }
 
 validateCFF <- function(cff_file) {
