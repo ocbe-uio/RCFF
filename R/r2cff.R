@@ -23,28 +23,11 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 		cff <- append(cff, fetchCFFelement(desc[l], "Date", "date-released"))
 	}
 	cff <- append(cff, "authors:", )
-	for (l in seq_along(desc)) {
-		cff <- append(
-			cff,
-			fetchCFFelement(
-				desc[l], "person", "  -", add_colons=FALSE, element_value=""
-			)
-		)
-		cff <- append(
-			cff,
-			fetchCFFelement(
-				desc[l], "given =", "    given-names:", add_colons=FALSE,
-				remove_elements=c('"', ",")
-			)
-		)
-		cff <- append(
-			cff,
-			fetchCFFelement(
-				desc[l], "family =", "    family-names:", add_colons=FALSE,
-				remove_elements=c('"', ",")
-			)
-		)
-		# FIXME: #8 if role = cph, given-name should be converted to name (organization)
+	author_count <- sum(grepl(pattern="person", x=desc))
+	for (a in seq_along(author_count)) {
+		author <- findAuthor(a, desc)
+		processed_author <- processAuthor(author)
+		cff <- append(cff, processed_author)
 	}
 	validateCFF(cff)
 
@@ -129,4 +112,67 @@ validateCFF <- function(cff_file) {
 			)
 		}
 	}
+}
+
+findAuthor <- function(author_num, txt) {
+	# ======================================================== #
+	# Find author_num-th author                                #
+	# ======================================================== #
+	author_found <- 0
+	person_start <- 1
+	last_line <- length(txt)
+	while (person_start < last_line & author_found != author_num) {
+		found_author <- grepl(pattern="person", x=txt[person_start])
+		if (found_author) {
+			author_found <- author_found + 1
+		} else {
+			person_start <- person_start + 1
+		}
+	}
+
+	# ======================================================== #
+	# Find person_end                                          #
+	# ======================================================== #
+	opened_parentheses <- as.numeric(grepl("\\(", txt[person_start]))
+	person_end <- person_start
+	closed_parentheses <- as.numeric(grepl("\\)", txt[person_end]))
+	is_end <- opened_parentheses == closed_parentheses
+	while (person_end <= last_line & !is_end) {
+		person_end <- person_end + 1
+		opened_parentheses <- opened_parentheses + as.numeric(grepl("\\(", txt[person_end]))
+		closed_parentheses <- closed_parentheses + as.numeric(grepl("\\)", txt[person_end]))
+		is_end <- opened_parentheses == closed_parentheses
+	}
+	person_txt <- txt[person_start:person_end]
+	person_txt <- gsub("\t", "", person_txt)
+	return(person_txt)
+}
+
+processAuthor <- function(person_txt) {
+	person_out <- c()
+	#FIXME: not retrieving given and family names because it's expecting them to be at the beginnign of the string
+	for (l in person_txt) {
+		person_out <- append(
+			person_out,
+			fetchCFFelement(
+				l, "person", "  -", add_colons=FALSE, element_value=""
+			)
+		)
+		person_out <- append(
+			person_out,
+			fetchCFFelement(
+				l, "given =", "    given-names:", add_colons=FALSE,
+				remove_elements=c('"', ",")
+			)
+		)
+		person_out <- append(
+			person_out,
+			fetchCFFelement(
+				l, "family =", "    family-names:", add_colons=FALSE,
+				remove_elements=c('"', ",")
+			)
+		)
+	}
+	# FIXME: #8 if role = cph, given-name should be converted to name (organization)
+	return(person_out)
 }
