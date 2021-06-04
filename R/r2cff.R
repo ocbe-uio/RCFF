@@ -53,6 +53,7 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 	}
 
 	# TODO: #6 add validation that throws warning when required CFF element is NA
+	validateCFF(cff)
 
 	# ======================================================== #
 	# Returning CFF file                                       #
@@ -112,4 +113,21 @@ exportCFF <- function(infile, outfile="CITATION.cff") {
 	out_file <- file(outfile)
 	writeLines(infile, out_file)
 	close(out_file)
+}
+
+validateCFF <- function(cff_file) {
+	required_fields <- data.frame(
+		cff = c("authors", "date-released", "title", "version"),
+		r = c("person", "Date", "Title", "Version")
+	)
+	for (f in required_fields$cff) {
+		found_f <- grepl(pattern=f, x=cff_file)
+		if (!any(found_f)) {
+			r_equivalent <- required_fields$r[match(f, required_fields$cff)]
+			warning(
+				f, " not found. It is a CFF 1.1.0 required field.\n",
+				"Please add a '", r_equivalent, "' field to your input file."
+			)
+		}
+	}
 }
