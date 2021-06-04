@@ -17,12 +17,7 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 	# Creating proto files for CFF and DESCRIPTION             #
 	# ======================================================== #
 	desc <- readLines(description_file)
-	cff <- c(
-		"# YAML 1.2",
-		"---",
-		"cff-version: 1.1.0",
-		'message: "If you use this software, please cite it using these metadata."'
-	)
+	cff  <- readLines("inst/extdata/CITATION-skeleton.cff")
 
 	# ======================================================== #
 	# Looping along DESCRIPTION to find CFF elements           #
