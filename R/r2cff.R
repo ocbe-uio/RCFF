@@ -12,16 +12,12 @@
 r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 	validateR(description_file)
 
-	# ======================================================== #
-	# Creating proto files for CFF and DESCRIPTION             #
-	# ======================================================== #
+	# Creating proto files for CFF and DESCRIPTION -----------------------------
 	desc     <- desc::desc(description_file)
 	cff_path <- system.file("extdata", "CITATION-skeleton.cff", package="RCFF")
 	cff      <- readLines(cff_path)
 
-	# ======================================================== #
-	# Looping along DESCRIPTION to find CFF elements           #
-	# ======================================================== #
+	# Placing CFF elements -----------------------------------------------------
 	cff <- append2cff(cff, desc, "Title")
 	cff <- append2cff(cff, desc, "Version")
 	cff <- append2cff(cff, desc, "Date","date-released")
@@ -31,9 +27,7 @@ r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 	cff <- append(cff, processed_author)
 	validateCFF(cff)
 
-	# ======================================================== #
-	# Returning CFF file                                       #
-	# ======================================================== #
+	# Returning CFF file -------------------------------------------------------
 	if (!export) {
 		return(cat(cff, sep = "\n"))
 	} else {
@@ -52,6 +46,7 @@ append2cff <- function(cff, desc, field, cff_field = tolower(field)) {
 }
 
 exportCFF <- function(infile, outfile="CITATION.cff") {
+	# Writes the created CFF file to the working directory
 	outfile <- "CITATION.cff"
 	if (file.exists(outfile)) {
 		outfile -> outfile_old
@@ -65,6 +60,7 @@ exportCFF <- function(infile, outfile="CITATION.cff") {
 }
 
 validateR <- function(r_file) {
+	# Makes sure the file passed to r2cff() exists
 	if (!file.exists(r_file)) {
 		stop(r_file, " file not found on the provided file path.")
 	}
@@ -72,6 +68,7 @@ validateR <- function(r_file) {
 }
 
 validateCFF <- function(cff_file) {
+	# Checks if a CFF file contains all mandatory fields
 	required_fields <- data.frame(
 		cff = c("authors", "date-released", "title", "version"),
 		r = c("person", "Date", "Title", "Version")
@@ -89,6 +86,7 @@ validateCFF <- function(cff_file) {
 }
 
 processAuthor <- function(author) {
+	# Parses the output of desc::desc_get_author to isolate fields
 	author <- as.character(author) # it comes as "person" class
 	roles <- gsub(".+\\[(.+)\\]$", "\\1", author)
 	if (grepl("cph", roles)) {
