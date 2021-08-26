@@ -8,7 +8,7 @@ on:
       - main
       - master
 
-name: check
+name: lucode2-check
 
 jobs:
   check:
@@ -19,7 +19,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
 
       - uses: r-lib/actions/setup-pandoc@v1
-      
+
       - name: Install dependencies
         run: |
           sudo apt-get install libcurl4-openssl-dev libgit2-dev libnetcdf-dev libudunits2-dev
@@ -52,7 +52,7 @@ jobs:
           remotes::install_deps(dependencies = TRUE, repos=repos)
           remotes::install_cran(c("devtools","covr","lucode2"), repos=repos)
         shell: Rscript {0}
-        
+
       - name: Run tests
         run: devtools::test(stop_on_failure = TRUE)
         shell: Rscript {0}
@@ -60,8 +60,8 @@ jobs:
       - name: Test coverage
         run: covr::codecov(quiet = FALSE)
         shell: Rscript {0}
-        
-      - name: Validation key 
+
+      - name: Validation key
         run: if(!lucode2:::validkey()$valid) stop("Invalid build key!")
         shell: Rscript {0}
-        
+
