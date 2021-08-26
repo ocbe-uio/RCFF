@@ -17,6 +17,11 @@ The package's DESCRIPTION file converted to CFF
 \description{
 Converts an R package DESCRIPTION file to Citation File Format
 }
+\examples{
+massRdesc <- system.file("extdata", "DESCRIPTION-MASS", package="RCFF")
+r2cff(massRdesc)
+
+}
 \author{
 Waldir Leoncio
 }

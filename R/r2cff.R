@@ -5,14 +5,19 @@
 #' @return The package's DESCRIPTION file converted to CFF
 #' @author Waldir Leoncio
 #' @export
+#' @examples
+#' massRdesc <- system.file("extdata", "DESCRIPTION-MASS", package="RCFF")
+#' r2cff(massRdesc)
+#'
 r2cff <- function(description_file = "DESCRIPTION", export = FALSE) {
 	validateR(description_file)
 
 	# ======================================================== #
 	# Creating proto files for CFF and DESCRIPTION             #
 	# ======================================================== #
-	desc <- readLines(description_file)
-	cff  <- readLines("inst/extdata/CITATION-skeleton.cff")
+	desc     <- readLines(description_file)
+	cff_path <- system.file("extdata", "CITATION-skeleton.cff", package="RCFF")
+	cff      <- readLines(cff_path)
 
 	# ======================================================== #
 	# Looping along DESCRIPTION to find CFF elements           #
