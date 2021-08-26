@@ -38,3 +38,5 @@ This package is licensed under the GPL, all contributions are welcome. To submit
 # Badges
 
 [![CI status](https://github.com/ocbe-uio/RCFF/workflows/R-CMD-check/badge.svg)](https://github.com/ocbe-uio/RCFF/actions)
+[![](https://img.shields.io/github/last-commit/ocbe-uio/RCFF.svg)](https://github.com/ocbe-uio/RCFF/commits/S4)
+[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
