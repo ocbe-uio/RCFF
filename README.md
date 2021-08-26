@@ -29,7 +29,9 @@ and run
 r2cff()
 ```
 
-To see part of the package's description file converted to CFF. You can also provide the path (absolute or relative) to some other DESCRPTION file to test it.
+To see part of the package's description file converted to CFF. You can also provide the path (absolute or relative) to some other DESCRIPTION file to test it. Moreover, `example(r2cff())` will also provide an example of how to use the package.
+
+General information about the package can be found on `?RCFF`.
 
 # Contributing
 
