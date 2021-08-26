@@ -1,0 +1,10 @@
+{
+  "title": "RCFF: R Citation File Format",
+  "version": "0.0.0.9003",
+  "description": "<p>Interface between R and the Citation File Format\n\t(Druskat et. al., 2019) <doi:10.5281/zenodo.1003149>, allowing for\n\tconversion between a package's DESCRIPTION file and the standardized\n\tCITATION.cff file.<\/p>",
+  "creators": [
+    {
+      "name": "Leoncio, Waldir"
+    }
+  ]
+}
