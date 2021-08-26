@@ -34,3 +34,7 @@ To see part of the package's description file converted to CFF. You can also pro
 # Contributing
 
 This package is licensed under the GPL, all contributions are welcome. To submit a bug or a feature request, please use [this form](https://github.com/ocbe-uio/RCFF/issues/new). To contribute code, please use [Pull Requests](https://github.com/ocbe-uio/RCFF/pulls).
+
+# Badges
+
+[![CI status](https://github.com/ocbe-uio/RCFF/workflows/R-CMD-check/badge.svg)](https://github.com/ocbe-uio/RCFF/actions)
