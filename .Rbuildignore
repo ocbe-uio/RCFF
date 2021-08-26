@@ -1,3 +1,5 @@
 ^LICENSE\.md$
 CITATION.cff
-.github
+^.*\.zenodo.json$
+^\.buildlibrary$
+^\.github$
