@@ -2,7 +2,7 @@
 [![](https://img.shields.io/github/last-commit/ocbe-uio/RCFF.svg)](https://github.com/ocbe-uio/RCFF/commits/S4)
 [![](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 
-:warning: The code on this project has been merged into the CRAN-released [citation](https://github.com/pik-piam/citation). I encourage you to use that package instead.
+:warning: The code on this project has been merged into the CRAN-released [citation](https://github.com/pik-piam/citation). I encourage you to use that package instead. This repository is schedule for archival.
 
 # What is a CFF?
 
