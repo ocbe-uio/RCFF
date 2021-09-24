@@ -1,3 +1,9 @@
+[![CI status](https://github.com/ocbe-uio/RCFF/workflows/R-CMD-check/badge.svg)](https://github.com/ocbe-uio/RCFF/actions)
+[![](https://img.shields.io/github/last-commit/ocbe-uio/RCFF.svg)](https://github.com/ocbe-uio/RCFF/commits/S4)
+[![](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
+
+:warning: The code on this project has been merged into the CRAN-released [citation](https://github.com/pik-piam/citation). I encourage you to use that package instead.
+
 # What is a CFF?
 
 CFF stands for Citation File Format, a scientific standard that facilitates the gathering of software metadata for citation purposes.
@@ -32,13 +38,3 @@ r2cff()
 To see part of the package's description file converted to CFF. You can also provide the path (absolute or relative) to some other DESCRIPTION file to test it. Moreover, `example(r2cff())` will also provide an example of how to use the package.
 
 General information about the package can be found on `?RCFF`.
-
-# Contributing
-
-This package is licensed under the GPL, all contributions are welcome. To submit a bug or a feature request, please use [this form](https://github.com/ocbe-uio/RCFF/issues/new). To contribute code, please use [Pull Requests](https://github.com/ocbe-uio/RCFF/pulls).
-
-# Badges
-
-[![CI status](https://github.com/ocbe-uio/RCFF/workflows/R-CMD-check/badge.svg)](https://github.com/ocbe-uio/RCFF/actions)
-[![](https://img.shields.io/github/last-commit/ocbe-uio/RCFF.svg)](https://github.com/ocbe-uio/RCFF/commits/S4)
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
